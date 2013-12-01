@@ -2055,8 +2055,16 @@ attribute
 
 attribute_params :: { Reversed [CExpr] }
 attribute_params
-  : constant_expression					              { singleton $1 }
-  | attribute_params ',' constant_expression	{ $1 `snoc` $3 }
+  : attribute_param					      { singleton $1 }
+  | attribute_params ',' attribute_param		      { $1 `snoc` $3 }
+
+attribute_param :: { CExpr }
+attribute_param
+  : constant_expression
+		{ $1 }
+  | ident '=' constant_expression
+		{% withNodeInfo $1 $ \node -> CAssign CAssignOp (CVar $1 node) $3 node }
+
 
 
 {
