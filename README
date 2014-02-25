@@ -1,6 +1,11 @@
-    *****THIS IS ONLY A FORK***** of
+This if fork of
 
     darcs get http://code.haskell.org/language-c
+
+Diff:
+
+    Sun Dec  1 18:35:54 SAMT 2013  Anton Nikishaev <me@lelf.lu>
+      * Support __attribute__((availability(macosx,introduced=10.0)))-like attrs
 
 
 
